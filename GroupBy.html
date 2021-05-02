@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group By Javascript</title>
+</head>
+<body>
+  <script>
+    const cars = [{
+                    make: "audi",
+                    model: "r8",
+                    year: "2012"
+                  },
+                  {
+                    make: "audi",
+                    model: "rs5",
+                    year: "2013"
+                  },
+                  {
+                    make: "ford",
+                    model: "mustang",
+                    year: "2012"
+                  },
+                  {
+                    make: "ford",
+                    model: "fusion",
+                    year: "2015"
+                  },
+                  {
+                    make: "kia",
+                    model: "optima",
+                    year: "2012"
+                }];
+
+      // let group = cars.reduce((r, a) => {
+      //     console.log("a", a);
+      //     console.log('r', r);
+      //     r[a.make] = [...r[a.make] || [], a];
+      //     return r;
+      //     }, {});
+
+      let group = cars.reduce((total, cars) => {
+        console.log(total);
+        console.log("b",total);
+      })
+      console.log("group", group);
+  </script>
+</body>
+</html>

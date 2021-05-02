@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To do list</title>
+</head>
+<style>
+  body {
+    padding: 10%;
+  }
+
+  .coret {
+    text-decoration: line-through;
+  }
+</style>
+<body>
+  <h4>Aplikasi To Do List</h4>
+
+  <form action="#">
+    <input type="text" id="new_text">
+    <button type="submit" onclick="tambah()">Tambah</button>
+  </form>
+
+  <ul id="todo">
+
+  </ul>
+
+  <script>
+    let todo = document.getElementById('todo');
+    // 1. Ambil value dari input id new_text
+    function tambah() {
+      
+      let inputText = document.getElementById('new_text');
+      // console.log(inputText.value);
+      // 2.tambahkan list baru ke dalam ul yang ber id todo
+
+      // Cara lama
+      /* let createEle = document.createElement('li');
+      let textBaru = document.createTextNode(inputText.value);
+
+      // satukan telebih dahulu element dan content
+      createEle.appendChild(textBaru);
+
+      // setelah itu masukkan ke dalam todo
+      todo.appendChild(createEle); */
+
+      // Cara Baru
+      let newTodo = /*html*/
+                    `<li>
+                      <span onclick="coret(this)">${inputText.value}</span>
+                      <span onclick="hapus(this)">[x]</span>
+                     </li>`;
+      
+      // ketika input berhasil di daftarkan akan menimpa input sebelumnya
+      todo.insertAdjacentHTML('afterbegin', newTodo);
+      // 3.Kosongkan input ketika input berhasil dimasukkan
+      inputText.value = '';
+    }
+
+    function coret(el) {
+      // ketika di klik coret element ini
+      el.classList.add('coret');
+    }
+
+    function hapus(el) {
+      // parent element untuk mengambil parent dari element span yaitu li
+      el.parentElement.remove();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DestructuringAssignment</title>
+</head>
+<body>
+  <script>
+    // const food = ['pempek', 'model', 'tekwan', 'celimpungan'];
+    
+    // const [makanan1, ...makanan] = food;
+    // console.log(makanan[0]);
+
+    // let a = 1;
+    // let b = 2;
+    // console.log(a,b);
+    // [a,b] = [b,a];
+    // console.log(a,b);
+
+    // const test = ({a,b} = {a: 10, b: 20});
+    // console.log(b);
+
+    // function drawChart({size = 'big', coords = {x: 0, y: 0}, radius = 25} = {}) {
+    //   console.log(size, coords, radius);
+    //   // do some chart drawing
+    // }
+
+    // drawChart({
+    //   size: 'small',
+    //   coords: {x: 18, y: 30},
+    //   radius: 30
+    // });
+
+    // const arr = [1,2,3];
+    // console.log(arr);
+    // [arr[2], arr[1]] = [arr[1], arr[2]];
+    // console.log(arr); // [1,3,2]
+
+    // let a, b;
+    // [a=5, b=7] = [1, 10];
+    // console.log(a); // 1
+    // console.log(b); // 7
+
+    // Destructuring Array
+
+    const nama = ['Muhmmad', 'Budi', 'Santoso']
+
+    // mengambil semua variabel nilai 
+    const [satu, dua, tiga] = nama
+    // mengambil beberapa variabel / skip variabel
+    const [one, , three] = nama
+
+    // swap items
+    let a = 1
+    let b = 2
+    console.log(`${a} --- ${b}`);
+    [a, b] = [b, a]
+    console.log(`${a} --- ${b}`);
+
+    // return value pada function
+    function f() {
+        return [1, 3, 4]
+    }
+    const [aa, bb, cc] = f()
+    console.log(cc);
+
+
+    // Rest parameter
+    const[aaa, ...values] = [1,2,3,4,5]
+    console.log(aaa);
+    console.log(values[0]);
+
+    // Desctructuring Object literal
+    const mhs = {
+        nama: 'Budi',
+        umur: 19
+    } 
+
+    const {nama, umur} = mhs;
+    console.log(nama);
+
+    // Destructuring Object langsung inisial nilai
+    ({nama, umur} = {nama : 'Budi santoso', umur: 20})
+    console.log(nama);
+
+    // Assign ke variabel baru
+    const mhs = {
+        nama: 'budi lagi',
+        umur: 20
+    }
+    const {nama: n, umur: u} = mhs
+    console.log(n);
+
+    // Memberikan default nilai dan assign variabel baru
+    const mhs = {
+        nama: 'budi lagi',
+        umur: 20,
+        email: 'budi@gmail.com'
+    }
+    const {nama: n, umur: u, email: e = '@gmail.com'} = mhs
+    console.log(e);
+
+    // Rest parameter
+    const mhs = {
+        nama: 'budi lagi',
+        umur: 20,
+        email: 'budi@gmail.com' 
+    }
+    const {nama, ...values} = mhs
+    console.log(mhs);
+
+
+    // mengambil field tertentu dari object, mirip seperti filter field object sebelum di eksekusi dalam function
+    const mhs = {
+        nama: 'budi pratama',
+        umur: 20,
+        email: 'budi@gmail.com' 
+    }
+
+    function getMhs({nama}) {
+        return nama
+    }
+
+    console.log(getMhs(mhs));
+
+    // Desctructuring fungsi yang isi nya return array
+    function kalkulasi1(a, b){
+        return [a + b, a - b, a * b, a / b];
+    }
+
+    // const tambah = kalkulasi(1, 2)[0];
+    // console.log(tambah);
+
+    const [tambah, kurang, kali, bagi = "kosong"] = kalkulasi1(5, 10);
+    console.log(bagi);
+
+    function kalkulasi2(a, b){
+        return{
+            tambah : a + b,
+            kali : a * b,
+            kurang : a - b,
+            bagi : a / b
+        }
+    }
+
+    const {bagi, tambah, kurang, kali} = kalkulasi2(10, 20);
+    console.log(kurang);
+
+
+    // Distructuring function arguments
+    const mhs1 = {
+        nama : 'Andi',
+        umur : 23,
+        email : 'andi@gmail.com',
+        nilai: {
+            uas: 90,
+            uts: 95,
+            kuis : 100
+        }
+    }
+
+    function cetakMhs1({nama, umur, nilai: {uas, uts, kuis}}){
+        return `Hai, nama saya ${nama} dan umur ${umur} tahun. dan nilai rata-rata saya ${(uas + uts + kuis) / 3}`;
+    }
+    console.log(cetakMhs1(mhs1));
+  </script>
+</body>
+</html>

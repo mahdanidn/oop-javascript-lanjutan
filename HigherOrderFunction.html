@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Higher Order Function javascript</title>
+</head>
+<body>
+  <script>
+    // latihan buat function
+    // perulangan yang di kali 3
+    // cari yang lebih besar dari 5
+    // jumlahkan hasilnya 
+
+    function latihan(n, action) {
+      let tampung = [];
+      let hasil = 0;
+      for (let i = 1; i <= n; i++) {
+        tampung.push(i);
+      }
+      hasil =  tampung.map(e => e * 3)
+                .filter(e => e > 10)
+                .reduce((acc, cur) => acc + cur);
+      return action(hasil);
+    }
+
+    latihan(10, console.log);
+    latihan(20, alert);
+
+    
+  </script>
+</body>
+</html>
