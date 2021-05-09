@@ -10,7 +10,7 @@ btnSearch.addEventListener('click', function() {
       const movieList = response.Search;
       let cards = '';
       movieList.forEach(m => {
-        cards += shodCards(m)
+        cards += showCards(m)
       })
       const movieRow = document.getElementById('movieList');
       movieRow.innerHTML = cards;
@@ -37,7 +37,7 @@ btnSearch.addEventListener('click', function() {
 })
 
 
-function shodCards(m) {
+function showCards(m) {
   return `<div class="col-md-4 my-4">
             <div class="card">
               <img src="${m.Poster}" class="card-img-top">
