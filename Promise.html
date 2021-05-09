@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise Javascript</title>
+</head>
+<body>
+  <script>
+    // const mhs = {
+    //   uas: 80,
+    //   mid: 50
+    // }
+
+    // const periksaNilai = () => {
+    //   return new Promise((resolve, reject) => {
+    //     if(mhs.uas >= 80 && mhs.mid >= 70) {
+    //       resolve('Selamat anda Lulus')
+    //     } else {
+    //       reject('Anda tidak lulus')
+    //     }
+    //   })
+    // }
+
+    // const tanganiLulus = (resolvedValue) => {
+    //   console.log(resolvedValue);
+    // }
+
+    // const tanganiTidakLulus = (rejectValue) => {
+    //   console.log(rejectValue);
+    // }
+
+    // periksaNilai()
+    //   .then(tanganiLulus)
+    //   .catch(tanganiTidakLulus);
+
+    // const state = {
+    // stock: {
+    //         coffeeBeans: 250,
+    //         water: 1000,
+    //     },
+    //     isCoffeeMachineBusy: false,
+    // }
+    
+    // const checkAvailability = () => {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             if (!state.isCoffeeMachineBusy) {
+    //                 resolve("Mesin kopi siap digunakan.");
+    //             } else {
+    //                 reject("Maaf, mesin sedang sibuk.");
+    //             }
+    //         }, 1000);
+    //     });
+    // };
+    
+    // const checkStock = () => {
+    //     return new Promise((resolve, reject) => {
+    //         state.isCoffeeMachineBusy = true;
+    //         setTimeout(() => {
+    //             if (state.stock.coffeeBeans >= 16 && state.stock.water >= 250) {
+    //                 resolve("Stok cukup. Bisa membuat kopi.");
+    //             } else {
+    //                 reject("Stok tidak cukup!");
+    //             }
+    //         }, 1500);
+    //     });
+    // };
+    
+    // const brewCoffee = () => {
+    //     console.log("Membuatkan kopi Anda...")
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             resolve("Kopi sudah siap!")
+    //         }, 2000);
+    //     });
+    // };
+    
+    // function makeEspresso() {
+    //     checkAvailability()
+    //         .then((value) => {
+    //             console.log(value);
+    //             return checkStock();
+    //         })
+    //         .then((value) => {
+    //             console.log(value)
+    //             return brewCoffee();
+    //         })
+    //         .then(value => {
+    //             console.log(value);
+    //             state.isCoffeeMachineBusy = false;
+    //         })
+    //         .catch(rejectedReason => {
+    //             console.log(rejectedReason);
+    //             state.isCoffeeMachineBusy = false;
+    //         });
+    // }
+    
+    // makeEspresso();
+
+    const mhs = {
+      aku: {
+        isiBensin: 11000,
+        duitDompet: 50000
+      },
+      pergiKampus: true,
+      idakUjan: true
+    }
+
+    const periksaDompet = () => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if(mhs.aku.isiBensin > 10000) {
+            resolve('Duit siap buat beli bensin')
+          } else {
+            reject('Duit katek bensin kosong dak jadi pegi')
+          }
+        }, 1000)
+      })
+    }
+
+    const checkDuitDompet = () => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if(mhs.aku.duitDompet > 25000) {
+            resolve('Duit Cukup buat makan siang')
+          } else {
+            reject('Duit idak cukup buat makan siang')
+          }
+        }, 1500);
+      })
+    }
+
+    const checkUjanDak = () => {
+      return new Promise((resolve, reject) => {
+        mhs.idakUjan = true;
+        setTimeout(() => { 
+            resolve('Ujan dak jadi pegi')
+        }, 2000);
+      })
+    }
+
+    const checkPegiKampus = () => {
+      return new Promise((resolve, reject) => {
+        mhs.pergiKampus = true;
+        resolve('Ready Pegi kampus');
+      })
+    }
+
+    function akuNakPegiKampus () {
+      periksaDompet()
+        .then((value) => {
+          console.log(value)
+          return checkDuitDompet();
+        })
+        .then((value) => {
+          console.log(value)
+          return checkUjanDak();
+        })
+        .then((value) => {
+          console.log(value)
+          return checkPegiKampus();
+        })
+        .catch(alasanDakJadiPegi => {
+          console.log(alasanDakJadiPegi);
+          mhs.idakUjan = false;
+        });
+    }
+
+    akuNakPegiKampus();
+  </script>
+</body>
+</html>

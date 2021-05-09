@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callback</title>
+</head>
+<body>
+  <script>
+    // Callback javascript
+    // Synchronous Callback
+    // function sapaClient(nama) {
+    //   alert(`Halo ${nama} selamat datang`);
+    // }
+
+    // function callbackSapaClient(panggilSapaClient) {
+    //   const nama = prompt('Masukkan nama anda : ');
+    //   panggilSapaClient(nama);
+    // }
+
+    // callbackSapaClient(nama  => {
+    //   alert(`Halo ${nama} selamat datang`);
+    // });
+
+    const food = [
+      {
+        namaMakanan: 'pempek',
+        harga: 1000,
+        bahan: 'ikan tenggiri'
+      },
+      {
+        namaMakanan: 'tekwan',
+        harga: 10000,
+        bahan: 'ikan gabus'
+      },
+      {
+        namaMakanan: 'model',
+        harga: 12000,
+        bahan: 'ikan tenggiri'
+      }
+    ];
+
+    console.log('start')
+    food.forEach(e => console.log(e.namaMakanan));
+    console.log('end');
+    // asychronous callback ada di latihan callback
+  </script>
+</body>
+</html>

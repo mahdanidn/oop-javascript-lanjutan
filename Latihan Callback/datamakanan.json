@@ -1,0 +1,17 @@
+[
+      {
+        "namaMakanan": "pempek",
+        "harga": 1000,
+        "bahan": "ikan tenggiri"
+      },
+      {
+        "namaMakanan": "tekwan",
+        "harga": 10000,
+        "bahan": "ikan gabus"
+      },
+      {
+        "namaMakanan": "model",
+        "harga": 12000,
+        "bahan": "ikan tenggiri"
+      }
+]
